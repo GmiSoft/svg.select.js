@@ -5,9 +5,9 @@ export function getMoseDownFunc (eventName, el) {
     ev.preventDefault()
     ev.stopPropagation()
 
-    var x = ev.pageX || ev.touches[0].pageX
-    var y = ev.pageY || ev.touches[0].pageY
-    el.fire(eventName, { x: x, y: y, event: ev })
+    const x = ev.pageX || ev.touches[0].pageX
+    const y = ev.pageY || ev.touches[0].pageY
+    el.fire(eventName, { x, y, event: ev })
   }
 }
 

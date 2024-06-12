@@ -8,7 +8,7 @@ extend(Element, {
    * @param {SelectHandler | Object | boolean} attr
    */
   selectize: function (attr = true) {
-    var selectHandler = this.remember('_selectHandler')
+    let selectHandler = this.remember('_selectHandler')
 
     if (!selectHandler) {
       if (attr.prototype instanceof SelectHandler) {

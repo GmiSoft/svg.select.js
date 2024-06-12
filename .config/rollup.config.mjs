@@ -1,45 +1,46 @@
-import babel from 'rollup-plugin-babel'
-import * as pkg from '../package.json'
-import filesize from 'rollup-plugin-filesize'
-// import { terser } from 'rollup-plugin-terser'
-import resolve from 'rollup-plugin-node-resolve'
-import commonjs from 'rollup-plugin-commonjs'
-import { uglify } from 'rollup-plugin-uglify'
+import babel from '@rollup/plugin-babel';
+import fs from 'fs';
+import filesize from 'rollup-plugin-filesize';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import terser from '@rollup/plugin-terser';
 
-const buildDate = Date()
+const pkg = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+
+const buildDate = new Date().toString();
 
 const headerLong = `/*!
 * ${pkg.name} - ${pkg.description}
 * @version ${pkg.version}
 * ${pkg.homepage}
 *
-* @copyright ${pkg.author.name}
+* @copyright ${pkg.author[0].name}
 * @license ${pkg.license}
 *
 * BUILT: ${buildDate}
-*/;`
+*/;`;
 
-const headerShort = `/*! ${pkg.name} v${pkg.version} ${pkg.license}*/;`
+const headerShort = `/*! ${pkg.name} v${pkg.version} ${pkg.license}*/;`;
 
 const getBabelConfig = (targets, corejs = false) => babel({
   include: 'src/**',
-  runtimeHelpers: true,
+  babelHelpers: 'runtime',
   babelrc: false,
   presets: [['@babel/preset-env', {
     modules: false,
     targets: targets || pkg.browserslist,
-  // useBuiltIns: 'usage'
+    // useBuiltIns: 'usage'
   }]],
   plugins: [['@babel/plugin-transform-runtime', {
     corejs: corejs,
     helpers: true,
     useESModules: true
   }]]
-})
+});
 
 // When few of these get mangled nothing works anymore
-// We loose literally nothing by let these unmangled
-const classes = []
+// We lose literally nothing by letting these unmangled
+const classes = [];
 
 const config = (node, min) => ({
   external: ['@svgdotjs/svg.js'],
@@ -59,7 +60,7 @@ const config = (node, min) => ({
     }
   },
   treeshake: {
-    // property getter have no sideeffects
+    // property getters have no side effects
     propertyReadSideEffects: false
   },
   plugins: [
@@ -67,7 +68,7 @@ const config = (node, min) => ({
     commonjs(),
     getBabelConfig(node && 'maintained node versions'),
     filesize(),
-    !min ? {} : uglify({
+    !min ? {} : terser({
       mangle: {
         reserved: classes
       },
@@ -76,9 +77,9 @@ const config = (node, min) => ({
       }
     })
   ]
-})
+});
 
 // [node, minified]
-const modes = [[false], [false, true]]
+const modes = [[false], [false, true]];
 
-export default modes.map(m => config(...m))
+export default modes.map(m => config(...m));

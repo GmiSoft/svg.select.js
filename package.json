@@ -11,9 +11,9 @@
   "license": "MIT",
   "typings": "./svg.draggable.js.d.ts",
   "author": "Ulrich-Matthias Schäfer",
-  "contributors": {
+  "contributors": [{
     "name": "Ulrich-Matthias Schäfer"
-  },
+  }],
   "homepage": "https://github.com/svgdotjs/svg.select.js",
   "main": "dist/svg.select.node.js",
   "unpkg": "dist/svg.select.min.js",
@@ -29,7 +29,7 @@
     "build": "npm run fix && npm run rollup",
     "fix": "npx eslint ./src --fix",
     "lint": "npx eslint ./src",
-    "rollup": "npx rollup -c .config/rollup.config.js",
+    "rollup": "npx rollup -c .config/rollup.config.mjs",
     "zip": "zip -j dist/svg.draggable.js.zip -- LICENSE README.md dist/svg.draggable.js dist/svg.draggable.js.map dist/svg.draggable.min.js dist/svg.draggable.min.js.map",
     "prepublishOnly": "rm -rf ./dist && npm run build",
     "postpublish": "npm run zip"
@@ -41,32 +41,30 @@
   "engines": {
     "node": ">= 0.8.0"
   },
+  "type": "module",
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/plugin-external-helpers": "^7.2.0",
-    "@babel/plugin-transform-runtime": "^7.2.0",
-    "@babel/polyfill": "^7.2.5",
-    "@babel/preset-env": "^7.2.3",
-    "@babel/runtime": "^7.2.0",
-    "@babel/runtime-corejs2": "^7.2.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.12.1",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^8.0.1",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "rollup": "^1.1.0",
-    "rollup-plugin-babel": "^4.3.1",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-filesize": "^6.0.0",
-    "rollup-plugin-multi-entry": "^2.1.0",
-    "rollup-plugin-node-resolve": "^4.0.0",
-    "rollup-plugin-terser": "^4.0.2",
-    "rollup-plugin-uglify": "^6.0.1",
-    "rollup-plugin-uglify-es": "0.0.1"
+    "@babel/core": "^7.24.7",
+    "@babel/plugin-external-helpers": "^7.24.7",
+    "@babel/plugin-transform-runtime": "^7.24.7",
+    "@babel/preset-env": "^7.24.7",
+    "@babel/runtime": "^7.24.7",
+    "@babel/runtime-corejs2": "^7.24.7",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-multi-entry": "^6.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^8.54.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.2.0",
+    "eslint-plugin-standard": "^4.1.0",
+    "rollup": "^4.18.0",
+    "rollup-plugin-filesize": "^10.0.0",
+    "@rollup/plugin-terser": "^0.4.4"
   },
   "dependencies": {
-    "@svgdotjs/svg.js": "^3.0.12"
+    "@svgdotjs/svg.js": "^3.2.0"
   }
 }
