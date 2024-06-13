@@ -16,40 +16,41 @@
   fill: white;
   stroke: black;
   stroke-width:1;
+  cursor: move;
 }
 
-/* .svg_select_points_lt{
+.selection_handle_lt{
     cursor: nw-resize;
 }
-.svg_select_points_rt{
+.selection_handle_rt{
     cursor: ne-resize;
 }
-.svg_select_points_rb{
+.selection_handle_rb{
     cursor: se-resize;
 }
-.svg_select_points_lb{
+.selection_handle_lb{
     cursor: sw-resize;
 }
-.svg_select_points_t{
+.selection_handle_t{
     cursor: n-resize;
 }
-.svg_select_points_r{
+.selection_handle_r{
     cursor: e-resize;
 }
-.svg_select_points_b{
+.selection_handle_b{
     cursor: s-resize;
 }
-.svg_select_points_l{
+.selection_handle_l{
     cursor: w-resize;
 }
 
-.svg_select_points_rot{
+/*.selection_handle_rot{
     stroke-width:1;
     stroke:black;
     fill: #F9FFED;
-}
+}*/
 
-.svg_select_points_point{
+.selection_handle_point{
     cursor: move;
 }
 
@@ -61,4 +62,4 @@
     stroke-opacity:0.8;
     fill-opacity:0.1;
     pointer-events:none; /* This ons is needed if you want to deselect or drag the shape*/
-/*} */
+} 

@@ -31,8 +31,8 @@ export class SelectHandler {
     this.updateResizeHandles()
     this.createRotationHandle()
     this.updateRotationHandle()
-    this.createShearHandle()
-    this.updateShearHandle()
+    // this.createShearHandle()
+    // this.updateShearHandle()
     this.observer.observe(this.el.node, { attributes: true })
   }
 
@@ -153,7 +153,7 @@ export class SelectHandler {
     this.updateSelection()
     this.updateResizeHandles()
     this.updateRotationHandle()
-    this.updateShearHandle()
+    // this.updateShearHandle()
   }
 }
 
